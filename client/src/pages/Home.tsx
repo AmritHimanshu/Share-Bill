@@ -5,6 +5,11 @@ export const Home: React.FC = () => {
   return (
     <div className="home-container">
       <Sidebar />
+      <div className="home-AddNew">
+        <div className="home-AddNew-empty">
+          Select the bill
+        </div>
+      </div>
 
 
 
