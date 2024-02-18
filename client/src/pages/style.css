@@ -1,0 +1,364 @@
+body {
+    background-color: rgb(231, 255, 231);
+}
+
+.home-container {
+    display: flex;
+    height: 100vh;
+    background-color: rgb(231, 255, 231);
+}
+
+.home-AddNew {
+    width: 75%;
+    padding: 20px 0 20px 0;
+    display: flex;
+    overflow-y: auto;
+}
+
+.sidebar-container {
+    padding: 15px;
+    width: 25%;
+    height: 100vh;
+    background-color: rgb(0, 144, 72);
+    box-shadow: 3px 0px 10px rgb(99, 99, 99);
+}
+
+.sidebar-header {
+    padding: 5px;
+    margin: 10px 0;
+    font-size: 25px;
+    background-color: rgb(231, 255, 231);
+    font-weight: bolder;
+    text-align: center;
+    box-shadow: inset 0px 0px 5px -1px black;
+    cursor: default;
+
+    /* background: -webkit-radial-gradient(#ffffff, #00ff62);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; */
+}
+
+.sidebar-new-bill {
+    width: 100%;
+    height: 50px;
+    color: white;
+    padding: 5px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    border: 2px solid white;
+    /* box-shadow: inset 0px 0px 35px -5px rgb(48, 48, 48); */
+}
+
+.sidebar-new-bill:hover {
+    transform: scale(1.02);
+    color: rgb(255, 255, 124);
+}
+
+.sidebar-old-bill {
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-old-bill>.title {
+    font-weight: bold;
+}
+
+.sidebar-old-bill>.date {
+    color: rgb(224, 224, 224);
+    font-size: 15px;
+}
+
+.sidebar-old-bill:hover {
+    transform: scale(1.02);
+}
+
+.sidebar-old-bill:hover>.title {
+    color: rgb(255, 255, 124);
+}
+
+.addNew-container {
+    background-color: white;
+    padding: 25px;
+    border-radius: 5px;
+    width: 500px;
+    margin: auto;
+    box-shadow: 5px 5px 20px -10px black;
+}
+
+.addNew-container-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.addNew-form-title>label {
+    color: rgb(87, 87, 87);
+    font-size: 17px;
+}
+
+.addNew-form-title>input[type=text] {
+    font-size: 18px;
+}
+
+.addNew-form-member>label {
+    color: rgb(87, 87, 87);
+    font-size: 17px;
+}
+
+.addNew-form-member>div>input[type=text] {
+    font-size: 18px;
+}
+
+::-ms-input-placeholder {
+    /* Edge 12-18 */
+    color: rgb(174, 174, 174);
+    font-size: 15px;
+}
+
+::placeholder {
+    color: rgb(174, 174, 174);
+    font-size: 15px;
+}
+
+.addNew-form-member-input {
+    display: flex;
+    align-items: center;
+}
+
+.add-members-button {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    color: rgb(0, 144, 72);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.addNew-create-button {
+    padding: 10px;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(0, 144, 72);
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.viewBillSection-container {
+    /* border: 2px solid red; */
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.viewBillSection-header {
+    padding: 0 10px 10px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 10px 30px -17px rgb(108, 108, 108);
+}
+
+.viewBillSection-header>div>.title {
+    font-size: 25px;
+    font-weight: bolder;
+    color: rgb(0, 101, 37);
+}
+
+.viewBillSection-header>div>.date {
+    font-size: 14px;
+    color: rgb(100, 100, 100);
+    font-weight: 500;
+}
+
+.viewBillSection-header>.add-spends {
+    background-color: rgb(0, 151, 0);
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.viewBillSection-card-container {
+    margin: 10px 0 0 0;
+    height: 94%;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.viewBillSection-card {
+    background-color: white;
+    width: 350px;
+    height: max-content;
+    margin: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px -10px black;
+    transition: all 0.2s ease-in-out;
+}
+
+.viewBillSection-card:hover {
+    transform: scale(1.02);
+}
+
+.viewBillSection-card>.card-title {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.viewBillSection-card>.total-spent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.viewBillSection-card>.due {
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.viewBillSection-card>.due-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.viewBillSection-card>.due-track:last-child {
+    border-bottom: 0px;
+}
+
+.login-body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px -10px black;
+}
+
+.login-header {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: green;
+}
+
+form>div {
+    margin: 10px 0;
+}
+
+form>div>label {
+    font-size: 18px;
+    color: black;
+}
+
+.login-password {
+    display: flex;
+    align-items: center;
+}
+
+.login-button {
+    padding: 10px;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(0, 144, 72);
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-register-container {
+    text-align: center;
+    margin: 10px 0 5px 0;
+}
+
+.login-register-container>span {
+    margin: 0 5px;
+}
+
+.login-register-container>span:last-child {
+    cursor: pointer;
+    color: green;
+    text-decoration: underline;
+}
+
+.register-body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container {
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px -10px black;
+}
+
+.register-header {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: green;
+}
+
+.register-password {
+    display: flex;
+    align-items: center;
+}
+
+.register-button {
+    padding: 10px;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(0, 144, 72);
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}

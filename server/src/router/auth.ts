@@ -1,0 +1,90 @@
+import express from 'express';
+const router = express.Router();
+const authenticate = require('../middleware/authenticate');
+const bcrypt = require('bcryptjs');
+import cookieParser from 'cookie-parser';
+router.use(cookieParser());
+import { Document } from 'mongoose';
+
+import User from '../model/userSchema';
+// import Bill from '../model/billSchema';
+
+interface UserDocument extends Document {
+    name: string;
+    email: string;
+    phone: string;
+    profilePic: string;
+    password: string;
+    date: Date;
+    tokens: { token: string }[];
+
+    generateAuthToken: () => Promise<string>;
+}
+
+
+router.post('/register', async (req, res) => {
+    const { name, email, phone, password, cpassword } = req.body;
+    if (!name || !email || !phone || !password || !cpassword) {
+        return res.status(422).json({ erro: "Fill all the fields" });
+    }
+    if (password !== cpassword) {
+        return res.status(422).json({ error: "Password and confirm password not matched" });
+    }
+    try {
+        const emailExist = await User.findOne({ email: email });
+        if (emailExist) {
+            return res.status(422).json({ error: "Email id already registered" });
+        }
+        else {
+            const user = new User({ name, email, phone, password });
+            const userRegister = await user.save();
+            if (userRegister) {
+                return res.status(201).json({ message: "User registered successfully" });
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+router.post('/signin', async (req, res) => {
+    const { email, password } = req.body;
+    console.log(email, password);
+    if (!email || !password) { return res.status(422).json({ error: "Fill all the fields" }); }
+    try {
+        const userExist: UserDocument | null = await User.findOne({ email: email });
+        if (userExist) {
+            const isMatch = await bcrypt.compare(password, userExist.password);
+            const Token = await userExist.generateAuthToken();
+
+            res.cookie("jwtoken", Token, {
+                expires: new Date(Date.now() + 25892000000),
+                httpOnly: true,
+                secure: true,  // Mark as secure if using HTTPS
+                sameSite: 'none',  // Set SameSite attribute for cross-origin requests
+                path: '/',
+            });
+
+            if (isMatch) {
+                res.status(200).json(userExist);
+            }
+            else {
+                res.status(400).json({ error: "Invalid Credentials" });
+            }
+        }
+        else {
+            res.status(400).json({ error: "Invalid Credentials" });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+});
+
+
+
+
+router.get('/', (req, res) => {
+    res.json({ message: "Server setup is done from Auth" });
+})
+
+module.exports = router;
