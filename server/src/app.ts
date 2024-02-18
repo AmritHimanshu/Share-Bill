@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 // import cors from 'cors';
 
 
-dotenv.config({ path: __dirname + '/.env' });
+dotenv.config({ path: __dirname + '../.env' });
 
 const PORT = process.env.PORT || 5000;
 
