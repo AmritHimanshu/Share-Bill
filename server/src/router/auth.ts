@@ -111,7 +111,7 @@ router.post('/createBill', authenticate, async (req: AuthenticatedRequest, res) 
 
 router.get('/getBill', authenticate, async (req: AuthenticatedRequest, res) => {
     try {
-        const bills = await Bill.find({ createdBy: req.userID }).select("-members");
+        const bills = await Bill.find({ createdBy: req.userID }).select("-members").sort("-date");
         res.status(200).json(bills);
     } catch (error) {
         console.log(error);
