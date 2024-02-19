@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request } from 'express';
 const router = express.Router();
 const authenticate = require('../middleware/authenticate');
 const bcrypt = require('bcryptjs');
@@ -7,7 +7,7 @@ router.use(cookieParser());
 import { Document } from 'mongoose';
 
 const User = require('../model/userSchema');
-// import Bill from '../model/billSchema';
+const Bill = require('../model/billSchema');
 
 interface UserDocument extends Document {
     name: string;
@@ -19,6 +19,13 @@ interface UserDocument extends Document {
     tokens: { token: string }[];
 
     generateAuthToken: () => Promise<string>;
+}
+
+
+interface AuthenticatedRequest extends Request {
+    token?: string;
+    rootUser?: Document;
+    userID?: string;
 }
 
 
@@ -80,15 +87,27 @@ router.post('/signin', async (req, res) => {
     }
 });
 
-router.post('/createBill', authenticate, async (req, res) => {
+router.post('/createBill', authenticate, async (req: AuthenticatedRequest, res) => {
+    const { title, memberNames } = req.body;
     try {
-        console.log(req.body);
+        if (!Array.isArray(memberNames) || !memberNames.every((name: unknown) => typeof name === 'string')) {
+            throw new Error('Invalid memberNames data');
+        }
+
+        const newBill = new Bill({
+            title: title,
+            members: memberNames.map(memberName => ({ member: { name: memberName } })),
+            createdBy: req.userID
+        });
+
+        const savedBill = await newBill.save();
+
         res.status(200).json({ message: 'Successfully created' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Internal server error" });
     }
-})
+});
 
 
 

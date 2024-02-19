@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { ObjectId } = mongoose.Schema.Types;
 
 const billSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
@@ -32,4 +32,4 @@ const billSchema = new mongoose.Schema({
 
 const Bill = mongoose.model('BILL', billSchema);
 
-export default Bill;
+module.exports = Bill;
