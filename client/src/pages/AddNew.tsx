@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function AddNew() {
+
+    const navigate = useNavigate();
 
     const [title, setTitle] = useState("");
     const [noOfInputs, setNoOfInputs] = useState([{ memberName: "" }, { memberName: "" }]);
@@ -54,6 +57,7 @@ function AddNew() {
             }
             else {
                 console.log(data);
+                navigate('/view-bill');
             }
         } catch (error) {
             console.log(error);
