@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 const jwt = require('jsonwebtoken');
 const User = require('../model/userSchema');
+// import User from '../model/userSchema';
 import { Document } from 'mongoose';
 
 interface AuthenticatedRequest extends Request {
@@ -12,6 +13,7 @@ interface AuthenticatedRequest extends Request {
 const authenticate = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     try {
         const token = req.cookies.jwtoken;
+
         const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
         // Check for token expiration
@@ -36,9 +38,6 @@ const authenticate = async (req: AuthenticatedRequest, res: Response, next: Next
         } else {
             res.status(401).send("Unauthorized: No valid token provided");
         }
-
-        // Uncomment the line below for debugging purposes
-        // console.log(error);
     }
 }
 

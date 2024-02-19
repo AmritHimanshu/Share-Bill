@@ -17,7 +17,6 @@ function Login() {
             return window.alert("Fill all the fields");
         }
         try {
-            console.log("1")
             const res = await fetch('/signin', {
                 method: 'POST',
                 headers: {
@@ -30,7 +29,6 @@ function Login() {
             });
 
             const data = await res.json();
-            console.log(data)
             if (res.status !== 200 || !data) window.alert(`${data.error}`);
             else {
                 window.alert("Signin successfully");
