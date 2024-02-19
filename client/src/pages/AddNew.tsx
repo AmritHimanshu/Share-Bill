@@ -4,7 +4,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function AddNew() {
 
-    const [titleInput, setTitleInput] = useState("");
+    const [title, setTitle] = useState("");
     const [noOfInputs, setNoOfInputs] = useState([{ memberName: "" }, { memberName: "" }]);
 
     const handleDeleteInput = (index: number) => {
@@ -26,11 +26,39 @@ function AddNew() {
         setNoOfInputs(onChangedValue);
     }
 
-    const handleOnCreate = () => {
-        if (titleInput === "") return window.alert("Enter the Title");
+    const handleOnCreate = async (e: any) => {
+        e.preventDefault();
+        if (title === "") return window.alert("Enter the Title");
         noOfInputs.map((item, index) => {
-            if (item.memberName === "") return window.alert(`Enter the name of Member ${index + 1}`);
+            if (item.memberName === "") return window.alert(`Member ${index + 1} is empty`);
         });
+
+        const memberNames = noOfInputs.map(input => input.memberName);
+        // console.log(memberNames);
+
+        try {
+            const res = await fetch('/createBill', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    title, memberNames
+                })
+            });
+
+            const data = await res.json();
+            if (res.status !== 200 || !data) {
+                return window.alert(`${data.error}`);
+            }
+            else {
+                console.log(data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     return (
@@ -41,7 +69,7 @@ function AddNew() {
             <form>
                 <div className="addNew-form-title">
                     <label htmlFor="title">Title</label>
-                    <input id="title" name="title" type="text" placeholder="Enter title" value={titleInput} onChange={(e) => setTitleInput(e.target.value)} />
+                    <input id="title" name="title" type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
 
                 {noOfInputs.map((item, index) => (

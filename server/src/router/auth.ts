@@ -39,11 +39,12 @@ router.post('/register', async (req, res) => {
             const user = new User({ name, email, phone, password });
             const userRegister = await user.save();
             if (userRegister) {
-                return res.status(201).json({ message: "User registered successfully" });
+                return res.status(200).json({ message: "User registered successfully" });
             }
         }
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: "Internal server error" });
     }
 })
 
@@ -77,9 +78,19 @@ router.post('/signin', async (req, res) => {
         }
     } catch (error) {
         console.log(error);
+        res.status(500).json({ error: "Internal server error" });
     }
 });
 
+router.post('/createBill', authenticate, async (req, res) => {
+    try {
+        console.log(req.body);
+        res.status(200)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+})
 
 
 

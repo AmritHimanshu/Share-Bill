@@ -31,7 +31,7 @@ function Login() {
 
             const data = await res.json();
             console.log(data)
-            if (res.status === 400 || !data) window.alert(`${data.error}`);
+            if (res.status !== 200 || !data) window.alert(`${data.error}`);
             else {
                 window.alert("Signin successfully");
                 navigate('/');

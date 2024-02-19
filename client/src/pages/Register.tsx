@@ -37,7 +37,7 @@ function Register() {
         });
 
         const data = await res.json();
-        if (res.status === 422 || !data) window.alert(`${data.error}`);
+        if (res.status !== 200 || !data) window.alert(`${data.error}`);
         else {
             window.alert(`${data.message}`);
             navigate('/login');
