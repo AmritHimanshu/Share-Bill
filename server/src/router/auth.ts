@@ -82,10 +82,10 @@ router.post('/signin', async (req, res) => {
     }
 });
 
-router.post('/createBill', authenticate, async (req, res) => {
+router.post('/createBill', async (req, res) => {
     try {
         console.log(req.body);
-        res.status(200)
+        res.status(200).json({ message: 'Successfully created' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ error: "Internal server error" });

@@ -24,6 +24,7 @@ function Register() {
             return window.alert("Fill all the fields");
         }
         if (password !== cpassword) {
+            setInputData({ ...inputData, cpassword: "" });
             return window.alert("Password and confirm password not matched");
         }
         const res = await fetch('/register', {
