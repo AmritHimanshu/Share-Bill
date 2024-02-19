@@ -50,14 +50,12 @@ router.post('/register', async (req, res) => {
 
 router.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-    console.log(email, password);
     if (!email || !password) { return res.status(422).json({ error: "Fill all the fields" }); }
     try {
         const userExist: UserDocument | null = await User.findOne({ email: email });
         if (userExist) {
             const isMatch = await bcrypt.compare(password, userExist.password);
             const Token = await userExist.generateAuthToken();
-
             res.cookie("jwtoken", Token, {
                 expires: new Date(Date.now() + 25892000000),
                 httpOnly: true,
