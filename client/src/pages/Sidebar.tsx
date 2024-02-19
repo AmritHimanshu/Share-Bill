@@ -6,7 +6,13 @@ function Sidebar() {
     const navigate = useNavigate();
 
     const [bills, setBills] = useState([]);
-    console.log(bills);
+
+    interface Bill {
+        title: string;
+        createdBy: string;
+        date: string;
+        _id: string;
+    }
 
     const getBill = async () => {
         try {
@@ -24,6 +30,7 @@ function Sidebar() {
             }
             else {
                 setBills(data);
+                // console.log(data);
             }
         } catch (error) {
             console.log(error);
@@ -43,7 +50,14 @@ function Sidebar() {
             <div>
                 <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
 
-                <div className="sidebar-old-bill">
+                {bills?.map((bill: Bill, index: number) => (
+                    <div key={index} className="sidebar-old-bill">
+                        <div className="title">{bill.title}</div>
+                        <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
+                    </div>
+                ))}
+
+                {/* <div className="sidebar-old-bill">
                     <div className="title">Darjeeling</div>
                     <div className='date'>25/2/2024</div>
                 </div>
@@ -62,7 +76,7 @@ function Sidebar() {
                 <div className="sidebar-old-bill">
                     <div className="title">Pune</div>
                     <div className='date'>25/2/2024</div>
-                </div>
+                </div> */}
             </div>
         </div>
     )
