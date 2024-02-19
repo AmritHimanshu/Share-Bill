@@ -1,7 +1,8 @@
-import React from 'react'
-import Sidebar from './Sidebar'
+import React from 'react';
+import Sidebar from './Sidebar';
 
 export const Home: React.FC = () => {
+
   return (
     <div className="home-container">
       <Sidebar />

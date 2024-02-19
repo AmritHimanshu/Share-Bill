@@ -119,6 +119,9 @@ router.get('/getBill', authenticate, async (req: AuthenticatedRequest, res) => {
     }
 });
 
+router.get('/user', authenticate, (req: AuthenticatedRequest, res) => {
+    res.status(200).send(req.rootUser);
+});
 
 
 router.get('/', (req, res) => {
