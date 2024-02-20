@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
+import { useParams } from 'react-router-dom';
 
 function BillPage() {
+
+    const { billId } = useParams();
+    const [billData, setBillData] = useState();
+    console.log(billData);
+
+    useEffect(() => {
+        const getBillData = async () => {
+            try {
+                const res = await fetch(`/getBillData/${billId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include'
+                });
+
+                const data = await res.json();
+                if (res.status !== 200 || !data) {
+                    return window.alert(`${data.error}`);
+                }
+                else {
+                    console.log(data);
+                    setBillData(data);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        getBillData();
+    }, [])
+
     return (
         <div className="home-container">
             <Sidebar />

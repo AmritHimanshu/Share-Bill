@@ -58,7 +58,7 @@ function NewHome() {
             }
             else {
                 console.log(data);
-                navigate('/view-bill');
+                navigate(`/${data._id}`);
             }
         } catch (error) {
             console.log(error);

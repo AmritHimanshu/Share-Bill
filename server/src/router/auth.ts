@@ -119,6 +119,20 @@ router.get('/getBill', authenticate, async (req: AuthenticatedRequest, res) => {
     }
 });
 
+router.get('/getBillData/:billId', authenticate, async (req: AuthenticatedRequest, res) => {
+    try {
+        const bill = await Bill.findOne({ _id: req.params.billId });
+        if (!bill) {
+            return res.status(422).json({ error: "Bill not found" });
+        }
+
+        res.status(200).json(bill);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 router.get('/user', authenticate, (req: AuthenticatedRequest, res) => {
     res.status(200).send(req.rootUser);
 });

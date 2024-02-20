@@ -51,7 +51,7 @@ function Sidebar() {
                 <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
 
                 {bills?.map((bill: Bill, index: number) => (
-                    <div key={index} className="sidebar-old-bill">
+                    <div key={index} className="sidebar-old-bill" onClick={() => navigate(`/${bill._id}`)}>
                         <div className="title">{bill.title}</div>
                         <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
                     </div>
