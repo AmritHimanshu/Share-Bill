@@ -89,7 +89,7 @@ function BillPage() {
                                         idx !== index ? (
                                             <div key={idx} className="due-track">
                                                 <div>{mbr?.member.name}</div>
-                                                <div>$5</div>
+                                                <div>${Number(mbr?.member.totalSpends) / billData.members.length}</div>
                                             </div>
                                         ) : (<div key={idx}></div>)
                                     ))
