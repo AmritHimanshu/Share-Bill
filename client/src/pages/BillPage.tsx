@@ -87,11 +87,11 @@ function BillPage() {
                                 {
                                     billData?.members.map((mbr, idx) => (
                                         idx !== index ? (
-                                            <div className="due-track">
+                                            <div key={idx} className="due-track">
                                                 <div>{mbr?.member.name}</div>
                                                 <div>$5</div>
                                             </div>
-                                        ) : (<div></div>)
+                                        ) : (<div key={idx}></div>)
                                     ))
                                 }
                             </div>
