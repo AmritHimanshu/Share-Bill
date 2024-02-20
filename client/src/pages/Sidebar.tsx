@@ -14,6 +14,10 @@ function Sidebar() {
         _id: string;
     }
 
+    const showBillData = async (billId: string) => {
+        navigate(`/${billId}`);
+    }
+
     const getBill = async () => {
         try {
             const res = await fetch('/getBill', {
@@ -30,7 +34,6 @@ function Sidebar() {
             }
             else {
                 setBills(data);
-                // console.log(data);
             }
         } catch (error) {
             console.log(error);
@@ -51,32 +54,11 @@ function Sidebar() {
                 <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
 
                 {bills?.map((bill: Bill, index: number) => (
-                    <div key={index} className="sidebar-old-bill" onClick={() => navigate(`/${bill._id}`)}>
+                    <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill._id)}>
                         <div className="title">{bill.title}</div>
                         <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
                     </div>
                 ))}
-
-                {/* <div className="sidebar-old-bill">
-                    <div className="title">Darjeeling</div>
-                    <div className='date'>25/2/2024</div>
-                </div>
-                <div className="sidebar-old-bill">
-                    <div className="title">Nainital</div>
-                    <div className='date'>25/2/2024</div>
-                </div>
-                <div className="sidebar-old-bill">
-                    <div className="title">Shimla</div>
-                    <div className='date'>25/2/2024</div>
-                </div>
-                <div className="sidebar-old-bill">
-                    <div className="title">Chennai</div>
-                    <div className='date'>25/2/2024</div>
-                </div>
-                <div className="sidebar-old-bill">
-                    <div className="title">Pune</div>
-                    <div className='date'>25/2/2024</div>
-                </div> */}
             </div>
         </div>
     )

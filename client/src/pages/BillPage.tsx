@@ -4,8 +4,22 @@ import { useParams } from 'react-router-dom';
 
 function BillPage() {
 
+    interface BillData {
+        createdBy: string;
+        date: string;
+        members: {
+            member: {
+                name: string;
+                totalSpends: string;
+            };
+        }[];
+        title: string;
+        _id: string;
+    }
+
     const { billId } = useParams();
-    const [billData, setBillData] = useState();
+
+    const [billData, setBillData] = useState<BillData | null>();
     console.log(billData);
 
     useEffect(() => {
@@ -24,7 +38,6 @@ function BillPage() {
                     return window.alert(`${data.error}`);
                 }
                 else {
-                    console.log(data);
                     setBillData(data);
                 }
             } catch (error) {
@@ -33,7 +46,7 @@ function BillPage() {
         }
 
         getBillData();
-    }, [])
+    }, [billId])
 
     return (
         <div className="home-container">
@@ -43,10 +56,14 @@ function BillPage() {
                     <div className="viewBillSection-header">
                         <div>
                             <div className="title">
-                                Darjeeling
+                                {billData && billData?.title}
                             </div>
                             <div className="date">
-                                25/02/2024
+                                {billData && (
+                                    <span>
+                                        {new Date(billData.date).toLocaleDateString()}
+                                    </span>
+                                )}
                             </div>
                         </div>
 
@@ -56,179 +73,30 @@ function BillPage() {
                     </div>
 
                     <div className="viewBillSection-card-container">
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
-                            </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
 
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
+                        {billData?.members && billData?.members.map((member, index) => (
+                            <div key={index} className="viewBillSection-card">
+                                <div className="card-title">{member?.member.name}</div>
+                                <div className="total-spent">
+                                    <div>Total spent</div>
+                                    <div>${member?.member.totalSpends}</div>
+                                </div>
+                                <hr />
+                                <div className="due">Due</div>
 
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
+                                {
+                                    billData?.members.map((mbr, idx) => (
+                                        idx !== index ? (
+                                            <div className="due-track">
+                                                <div>{mbr?.member.name}</div>
+                                                <div>$5</div>
+                                            </div>
+                                        ) : (<div></div>)
+                                    ))
+                                }
                             </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
+                        ))}
 
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
-
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
-                            </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
-
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
-
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
-                            </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
-
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
-
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
-                            </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
-
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
-
-                        <div className="viewBillSection-card">
-                            <div className="card-title">
-                                Ramesh
-                            </div>
-                            <div className="total-spent">
-                                <div>Total spent</div>
-                                <div>$25</div>
-                            </div>
-                            <hr />
-                            <div className="due">Due</div>
-
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                            <div className="due-track">
-                                <div>Vikash</div>
-                                <div>$5</div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
