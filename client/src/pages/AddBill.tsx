@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Sidebar from './Sidebar';
 
-function NewHome() {
+function AddBill() {
 
     const navigate = useNavigate();
 
@@ -108,4 +108,4 @@ function NewHome() {
     )
 }
 
-export default NewHome
+export default AddBill

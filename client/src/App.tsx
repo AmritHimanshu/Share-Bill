@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { login } from './features/userSlice';
 import './pages/style.css'
 import { Home } from './pages/Home';
-import NewHome from './pages/NewHome';
+import AddBill from './pages/AddBill';
 import BillPage from './pages/BillPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -43,7 +43,7 @@ const App: React.FC = () => {
       <div className="">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/new-bill" element={<NewHome />} />
+          <Route path="/new-bill" element={<AddBill />} />
           <Route path="/:name/:billId" element={<BillPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
