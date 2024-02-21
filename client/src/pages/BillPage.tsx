@@ -114,6 +114,7 @@ function BillPage() {
                             </div>
                         }
                     </div>
+                    <hr />
 
                     <div className="viewBillSection-card-container">
 

@@ -1,14 +1,14 @@
 body {
-    /* background-color: rgb(231, 255, 231); */
-    background-color: whitesmoke;
+    background-color: rgb(195, 195, 195);
 }
 
 .home-container {
     display: flex;
     height: 100vh;
+    background-color: rgb(195, 195, 195);
     /* background-color: rgb(231, 255, 231); */
     /* background-color: whitesmoke; */
-    background-color: rgba(58, 104, 255, 0.758);
+    /* background-color: rgb(218, 238, 255); */
 }
 
 .home-AddNew {
@@ -25,7 +25,7 @@ body {
     justify-content: center;
     font-size: 100px;
     font-weight: bolder;
-    color: rgb(193, 217, 197);
+    color: rgb(255, 255, 216);
     letter-spacing: 10px;
 }
 
@@ -33,7 +33,9 @@ body {
     padding: 15px;
     width: 25%;
     height: 100vh;
-    background-color: rgb(0, 144, 72);
+    background-color: rgb(57, 57, 57);
+    /* background-color: rgb(78, 27, 205); */
+    /* background-color: rgb(0, 144, 72); */
     /* box-shadow: 3px 0px 10px rgb(99, 99, 99); */
 }
 
@@ -41,7 +43,7 @@ body {
     padding: 5px;
     margin: 10px 0;
     font-size: 25px;
-    background-color: rgb(231, 255, 231);
+    background-color: rgb(195, 195, 195);
     font-weight: bolder;
     text-align: center;
     box-shadow: inset 0px 0px 5px -1px black;
@@ -77,8 +79,7 @@ body {
 }
 
 .sidebar-old-bill {
-    border-bottom: 1px solid white;
-    border-radius: 5px;
+    border-bottom: 1px solid rgb(141, 141, 141);
     text-align: center;
     padding: 5px 10px;
     margin: 10px 0;
@@ -91,6 +92,10 @@ body {
     transition: transform 0.2s ease-in-out;
 }
 
+.sidebar-old-bill>.active {
+    color: rgb(255, 255, 124);
+}
+
 .sidebar-old-bill>.title {
     font-weight: bold;
 }
@@ -100,12 +105,8 @@ body {
     font-size: 15px;
 }
 
-.sidebar-old-bill:hover {
-    transform: scale(1.02);
-}
-
 .sidebar-old-bill:hover>.title {
-    color: rgb(255, 255, 124);
+    color: rgb(255, 255, 216);
 }
 
 .addNew-container {
@@ -161,7 +162,7 @@ body {
     display: flex;
     align-items: center;
     width: max-content;
-    color: rgb(0, 144, 72);
+    color: rgb(57, 57, 57);
     font-weight: bold;
     cursor: pointer;
 }
@@ -171,12 +172,17 @@ body {
     margin-top: 25px;
     width: 100%;
     text-align: center;
-    background-color: rgb(0, 144, 72);
+    background-color: rgb(57, 57, 57);
     color: white;
     font-weight: bold;
     border: 2px solid white;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+.addNew-create-button:hover {
+    transform: scale(1.02);
 }
 
 .viewBillSection-container {
@@ -194,29 +200,38 @@ body {
 }
 
 .viewBillSection-header>div>.title {
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bolder;
-    color: rgb(0, 101, 37);
+    color: rgb(57, 57, 57);
 }
 
 .viewBillSection-header>div>.date {
     font-size: 14px;
-    color: rgb(100, 100, 100);
+    color: rgb(59, 59, 59);
     font-weight: 500;
 }
 
 .viewBillSection-header>.add-spends {
-    background-color: rgb(0, 151, 0);
+    background-color: rgb(57, 57, 57);
     color: white;
     font-weight: bold;
     padding: 5px;
     border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.viewBillSection-header>.add-spends:hover {
+    transform: scale(1.02);
+}
+
+hr {
+    border: 1px solid rgb(116, 116, 116);
 }
 
 .viewBillSection-card-container {
     margin: 10px 0 0 0;
-    height: 94%;
+    height: 93%;
     overflow-y: auto;
     display: flex;
     align-items: center;
@@ -231,7 +246,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(231, 255, 231, 0.8);
+    background: rgba(195, 195, 195, 0.883);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 function Sidebar() {
 
     const navigate = useNavigate();
+
+    const { name } = useParams();
 
     const [bills, setBills] = useState([]);
 
@@ -56,7 +58,10 @@ function Sidebar() {
 
                 {bills?.map((bill: Bill, index: number) => (
                     <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill.title, bill._id)}>
-                        <div className="title">{bill.title}</div>
+                        {name === bill.title ?
+                            <div className="active title">{bill.title}</div>
+                            :
+                            <div className="title">{bill.title}</div>}
                         <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
                     </div>
                 ))}
