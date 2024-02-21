@@ -20,10 +20,6 @@ app.use(express.json());
 app.use(require("./router/auth"));
 
 
-app.get('/', (req, res) => {
-    res.json({ message: "Server setup is done" });
-})
-
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
 })
