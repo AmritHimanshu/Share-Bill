@@ -27,6 +27,7 @@ body {
     font-weight: bolder;
     color: rgb(255, 255, 216);
     letter-spacing: 10px;
+    cursor: default;
 }
 
 .sidebar-container {
