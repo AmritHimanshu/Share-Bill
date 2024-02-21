@@ -82,7 +82,7 @@ function BillPage() {
                                     <div>${member?.member.totalSpends}</div>
                                 </div>
                                 <hr />
-                                <div className="due">Due</div>
+                                <div className="due">Pay to</div>
 
                                 {
                                     billData?.members.map((mbr, idx) => (
