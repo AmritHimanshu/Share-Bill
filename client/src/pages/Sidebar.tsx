@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { selectUser } from '../features/userSlice';
 
 function Sidebar() {
 
     const navigate = useNavigate();
+
+    const user = useSelector(selectUser);
 
     const { name } = useParams();
 
@@ -49,22 +53,29 @@ function Sidebar() {
 
     return (
         <div className="sidebar-container">
-            <div className="sidebar-header">
-                Split - your - bills
+            <div>
+                <div className="sidebar-header">
+                    Split - your - bills
+                </div>
+
+                <div>
+                    <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
+
+                    {bills?.map((bill: Bill, index: number) => (
+                        <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill.title, bill._id)}>
+                            {name === bill.title ?
+                                <div className="active title">{bill.title}</div>
+                                :
+                                <div className="title">{bill.title}</div>}
+                            <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
+                        </div>
+                    ))}
+                </div>
             </div>
 
-            <div>
-                <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
-
-                {bills?.map((bill: Bill, index: number) => (
-                    <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill.title, bill._id)}>
-                        {name === bill.title ?
-                            <div className="active title">{bill.title}</div>
-                            :
-                            <div className="title">{bill.title}</div>}
-                        <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
-                    </div>
-                ))}
+            <div className="sidebar-account">
+                <img src={user?.profilePic} alt="" onClick={() => navigate('/login')} style={{ cursor: 'pointer' }} />
+                <div className="username">{user?.name}</div>
             </div>
         </div>
     )
