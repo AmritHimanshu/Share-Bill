@@ -219,6 +219,40 @@ body {
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    /* border: 2px solid red; */
+    position: relative;
+}
+
+.viewBillSection-card-container-addSpend {
+    /* border: 2px solid black; */
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(231, 255, 231, 0.594);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewBillSection-car-container-addSpend-box {
+    width: 400px;
+    height: 600px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 5px 5px 20px -10px black;
+    border-radius: 5px;
+}
+
+.viewBillSection-car-container-addSpend-box>.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.viewBillSection-car-container-addSpend-box>.header>.title {
+    font-size: 19px;
+    font-weight: bold;
 }
 
 .viewBillSection-card {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Sidebar from './Sidebar';
 import { useParams } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import CloseIcon from '@mui/icons-material/Close';
 
 function BillPage() {
 
@@ -20,7 +21,9 @@ function BillPage() {
     const { billId } = useParams();
 
     const [billData, setBillData] = useState<BillData | null>();
-    console.log(billData);
+    // console.log(billData);
+
+    const [isTrue, setIsTrue] = useState(false);
 
     useEffect(() => {
         const getBillData = async () => {
@@ -67,9 +70,11 @@ function BillPage() {
                             </div>
                         </div>
 
-                        <div className="add-spends">
-                            Add Spends
-                        </div>
+                        {!isTrue &&
+                            <div className="add-spends" onClick={() => setIsTrue(!isTrue)}>
+                                Add Spends
+                            </div>
+                        }
                     </div>
 
                     <div className="viewBillSection-card-container">
@@ -99,6 +104,17 @@ function BillPage() {
                                 }
                             </div>
                         ))}
+
+                        {isTrue &&
+                            <div className="viewBillSection-card-container-addSpend">
+                                <div className="viewBillSection-car-container-addSpend-box">
+                                    <div className="header">
+                                        <div className="title">Add Spends</div>
+                                        <div><CloseIcon style={{ cursor: 'pointer' }} onClick={() => setIsTrue(!isTrue)} /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
 
                     </div>
                 </div>
