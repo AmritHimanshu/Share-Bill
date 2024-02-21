@@ -19,6 +19,7 @@ function BillPage() {
     }
 
     const { billId } = useParams();
+    // console.log(billId)
 
     const [billData, setBillData] = useState<BillData | null>();
     // console.log(billData);
@@ -111,6 +112,17 @@ function BillPage() {
                                     <div className="header">
                                         <div className="title">Add Spends</div>
                                         <div><CloseIcon style={{ cursor: 'pointer' }} onClick={() => setIsTrue(!isTrue)} /></div>
+                                    </div>
+                                    <hr />
+                                    <div className="body">
+                                        <div>
+                                            <label htmlFor="selectedFruit">Choose member:</label>
+                                            <select name="selectedFruit" id="selectedFruit" style={{ display: 'block' }}>
+                                                {billData?.members.map((member, index) => (
+                                                    <option key={index} value={member.member.name}>{member.member.name}</option>
+                                                ))}
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

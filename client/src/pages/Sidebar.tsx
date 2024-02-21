@@ -16,6 +16,7 @@ function Sidebar() {
 
     const showBillData = async (billTitle: string, billId: string) => {
         navigate(`/${billTitle}/${billId}`);
+        window.location.reload();
     }
 
     const getBill = async () => {

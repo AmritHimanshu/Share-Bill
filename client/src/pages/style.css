@@ -255,6 +255,15 @@ body {
     font-weight: bold;
 }
 
+.viewBillSection-car-container-addSpend-box>.body>div>label {
+    color: black;
+    font-size: 16px;
+}
+
+.viewBillSection-car-container-addSpend-box>.body>div>select {
+    border: 1px solid rgb(85, 85, 85);
+}
+
 .viewBillSection-card {
     background-color: white;
     width: 350px;
