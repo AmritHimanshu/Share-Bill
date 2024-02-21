@@ -58,7 +58,7 @@ function NewHome() {
             }
             else {
                 console.log(data);
-                navigate(`/${data._id}`);
+                navigate(`/${data.title}/${data._id}`);
             }
         } catch (error) {
             console.log(error);

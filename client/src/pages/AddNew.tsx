@@ -57,7 +57,7 @@ function AddNew() {
             }
             else {
                 console.log(data);
-                navigate('/view-bill');
+                navigate('/');
             }
         } catch (error) {
             console.log(error);
