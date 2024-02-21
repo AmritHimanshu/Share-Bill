@@ -73,8 +73,8 @@ function Sidebar() {
                 </div>
             </div>
 
-            <div className="sidebar-account">
-                <img src={user?.profilePic} alt="" onClick={() => navigate('/login')} style={{ cursor: 'pointer' }} />
+            <div className="sidebar-account" onClick={() => navigate('/login')} title="Log out" >
+                <img src={user?.profilePic} alt="" />
                 <div className="username">{user?.name}</div>
             </div>
         </div>

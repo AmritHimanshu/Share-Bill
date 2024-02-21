@@ -116,7 +116,7 @@ body {
 .sidebar-account {
     display: flex;
     align-items: center;
-    cursor: default;
+    cursor: pointer;
 }
 
 .sidebar-account>img {
