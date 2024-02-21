@@ -123,7 +123,7 @@ function BillPage() {
                                 <div className="card-title">{member?.member.name}</div>
                                 <div className="total-spent">
                                     <div>Total spent</div>
-                                    <div>${member?.member.totalSpends}</div>
+                                    <div>₹{member?.member.totalSpends}</div>
                                 </div>
                                 <hr />
                                 <div className="due">Pay to</div>
@@ -135,7 +135,7 @@ function BillPage() {
                                                 <div>{mbr?.member.name}</div>
 
                                                 {(Number(member?.member.totalSpends) / billData.members.length) >= (Number(mbr?.member.totalSpends) / billData.members.length
-                                                ) ? <div>$0</div> : <div>${Number(mbr?.member.totalSpends) / billData.members.length - Number(member?.member.totalSpends) / billData.members.length}</div>}
+                                                ) ? <div> ₹0</div> : <div>₹{Number(mbr?.member.totalSpends) / billData.members.length - Number(member?.member.totalSpends) / billData.members.length}</div>}
 
                                             </div>
                                         ) : (<div key={idx}></div>)

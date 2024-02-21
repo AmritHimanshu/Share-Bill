@@ -79,7 +79,7 @@ body {
 
 .sidebar-new-bill:hover {
     transform: scale(1.02);
-    color: rgb(255, 255, 124);
+    color: rgb(0, 144, 72);
 }
 
 .sidebar-old-bill {
@@ -97,7 +97,8 @@ body {
 }
 
 .sidebar-old-bill>.active {
-    color: rgb(255, 255, 124);
+    color: rgb(0, 144, 72);
+    /* color: rgb(255, 255, 124); */
 }
 
 .sidebar-old-bill>.title {
@@ -143,6 +144,7 @@ body {
 .addNew-container-title {
     font-size: 20px;
     margin-bottom: 25px;
+    color: rgb(0, 144, 72);
 }
 
 .addNew-form-title>label {
@@ -194,7 +196,7 @@ body {
     margin-top: 25px;
     width: 100%;
     text-align: center;
-    background-color: rgb(57, 57, 57);
+    background-color: rgb(0, 144, 72);
     color: white;
     font-weight: bold;
     border: 2px solid white;
@@ -234,7 +236,7 @@ body {
 }
 
 .viewBillSection-header>.add-spends {
-    background-color: rgb(57, 57, 57);
+    background-color: rgb(0, 144, 72);
     color: white;
     font-weight: bold;
     padding: 5px;
@@ -326,6 +328,7 @@ hr {
 .viewBillSection-card>.card-title {
     font-size: 19px;
     font-weight: bold;
+    color: rgb(0, 144, 72);
 }
 
 .viewBillSection-card>.total-spent {
