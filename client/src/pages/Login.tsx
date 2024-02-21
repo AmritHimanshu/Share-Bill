@@ -5,6 +5,9 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function Login() {
 
+    // const BASE_URL = "http://localhost:5000";
+    const BASE_URL = "https://share-bill-api.vercel.app";
+
     const navigate = useNavigate();
 
     const [visible, setVisible] = useState(false);
@@ -17,7 +20,7 @@ function Login() {
             return window.alert("Fill all the fields");
         }
         try {
-            const res = await fetch('/signin', {
+            const res = await fetch(`${BASE_URL}/signin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,7 +46,7 @@ function Login() {
     useEffect(() => {
         const logOutUser = async () => {
             try {
-                const res = await fetch('/logout', {
+                const res = await fetch(`${BASE_URL}/logout`, {
                     method: 'GET',
                     headers: {
                         Accept: 'application/json', // For cookies

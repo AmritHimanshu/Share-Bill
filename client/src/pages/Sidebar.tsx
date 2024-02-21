@@ -5,6 +5,9 @@ import { selectUser } from '../features/userSlice';
 
 function Sidebar() {
 
+    // const BASE_URL = "http://localhost:5000";
+    const BASE_URL = "https://share-bill-api.vercel.app";
+
     const navigate = useNavigate();
 
     const user = useSelector(selectUser);
@@ -27,7 +30,7 @@ function Sidebar() {
 
     const getBill = async () => {
         try {
-            const res = await fetch('/getBill', {
+            const res = await fetch(`${BASE_URL}/getBill`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

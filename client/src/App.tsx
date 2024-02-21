@@ -11,11 +11,14 @@ import Register from './pages/Register';
 
 const App: React.FC = () => {
 
+  // const BASE_URL = "http://localhost:5000";
+  const BASE_URL = "https://share-bill-api.vercel.app";
+
   const dispatch = useDispatch();
 
   const getData = async () => {
     try {
-      const res = await fetch('/user', {
+      const res = await fetch(`${BASE_URL}/user`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'

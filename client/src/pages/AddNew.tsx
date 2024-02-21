@@ -5,6 +5,9 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 function AddNew() {
 
+    // const BASE_URL = "http://localhost:5000";
+    const BASE_URL = "https://share-bill-api.vercel.app";
+
     const navigate = useNavigate();
 
     const [title, setTitle] = useState("");
@@ -40,7 +43,7 @@ function AddNew() {
         // console.log(memberNames);
 
         try {
-            const res = await fetch('/createBill', {
+            const res = await fetch(`${BASE_URL}/createBill`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

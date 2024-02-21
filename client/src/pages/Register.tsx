@@ -5,6 +5,9 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 function Register() {
 
+    // const BASE_URL = "http://localhost:5000";
+    const BASE_URL = "https://share-bill-api.vercel.app";
+
     const navigate = useNavigate();
 
     const [visible, setVisible] = useState(false);
@@ -27,7 +30,7 @@ function Register() {
             setInputData({ ...inputData, cpassword: "" });
             return window.alert("Password and confirm password not matched");
         }
-        const res = await fetch('/register', {
+        const res = await fetch(`${BASE_URL}/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -5,6 +5,9 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function BillPage() {
 
+    // const BASE_URL = "http://localhost:5000";
+    const BASE_URL = "https://share-bill-api.vercel.app";
+
     interface BillData {
         createdBy: string;
         date: string;
@@ -38,7 +41,7 @@ function BillPage() {
         }
 
         try {
-            const res = await fetch(`/addAmount/${billId}`, {
+            const res = await fetch(`${BASE_URL}/addAmount/${billId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +69,7 @@ function BillPage() {
     useEffect(() => {
         const getBillData = async () => {
             try {
-                const res = await fetch(`/getBillData/${billId}`, {
+                const res = await fetch(`${BASE_URL}/getBillData/${billId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
