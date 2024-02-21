@@ -12,7 +12,7 @@ require('./db/conn');
 
 app.use(cors({
     // origin: true,
-    origin: 'https://share-bill-lemon.vercel.app',
+    origin: "https://share-bill-api.vercel.app",
     credentials: true
 }));
 
