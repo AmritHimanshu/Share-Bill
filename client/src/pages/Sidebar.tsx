@@ -14,8 +14,8 @@ function Sidebar() {
         _id: string;
     }
 
-    const showBillData = async (billId: string) => {
-        navigate(`/${billId}`);
+    const showBillData = async (billTitle: string, billId: string) => {
+        navigate(`/${billTitle}/${billId}`);
     }
 
     const getBill = async () => {
@@ -54,7 +54,7 @@ function Sidebar() {
                 <div className="sidebar-new-bill" onClick={() => navigate('/new-Bill')}>+ New</div>
 
                 {bills?.map((bill: Bill, index: number) => (
-                    <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill._id)}>
+                    <div key={index} className="sidebar-old-bill" onClick={() => showBillData(bill.title, bill._id)}>
                         <div className="title">{bill.title}</div>
                         <div className='date'>{new Date(bill.date).toLocaleDateString()}</div>
                     </div>
