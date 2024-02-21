@@ -133,6 +133,48 @@ router.get('/getBillData/:billId', authenticate, async (req: AuthenticatedReques
     }
 });
 
+router.put('/addAmount/:billId', authenticate, async (req: AuthenticatedRequest, res) => {
+    try {
+        const { billId } = req.params;
+
+        // selectedMember is the id of the member
+        const { selectedMember, inputAmount } = req.body;
+
+        const existingBill = await Bill.findOne({ "_id": billId, "members._id": selectedMember });
+
+        if (!existingBill) {
+            return res.status(404).json({ error: "Bill not found" });
+        }
+
+        const memberIndex = existingBill.members.findIndex((member: { _id: string }) => member._id.toString() === selectedMember);
+
+        if (memberIndex === -1) {
+            return res.status(404).json({ error: "Member not found in the bill" });
+        }
+
+        const parsedTotalSpends = parseFloat(existingBill.members[memberIndex].member.totalSpends);
+        const inputAmountNumber = parseFloat(inputAmount);
+
+        const newTotalSpends = (parsedTotalSpends + inputAmountNumber).toString();
+
+        const bill = await Bill.findOneAndUpdate(
+            { "_id": billId, "members._id": selectedMember },
+            { $set: { "members.$.member.totalSpends": newTotalSpends } },
+            { new: true }
+        );
+
+        if (!bill) {
+            return res.status(404).json({ error: "Bill not found" });
+        }
+        else {
+            return res.status(200).json(bill);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 router.get('/user', authenticate, (req: AuthenticatedRequest, res) => {
     res.status(200).send(req.rootUser);
 });

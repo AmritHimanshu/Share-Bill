@@ -228,7 +228,7 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: rgba(231, 255, 231, 0.594);
+    background: rgba(231, 255, 231, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -236,7 +236,7 @@ body {
 
 .viewBillSection-car-container-addSpend-box {
     width: 400px;
-    height: 600px;
+    /* height: 600px; */
     background-color: white;
     padding: 10px;
     box-shadow: 5px 5px 20px -10px black;
@@ -262,6 +262,10 @@ body {
 
 .viewBillSection-car-container-addSpend-box>.body>div>select {
     border: 1px solid rgb(85, 85, 85);
+}
+
+.viewBillSection-car-container-addSpend-box>.body>.amount {
+    padding-top: 20px;
 }
 
 .viewBillSection-card {

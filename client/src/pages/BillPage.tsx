@@ -12,7 +12,8 @@ function BillPage() {
             member: {
                 name: string;
                 totalSpends: string;
-            };
+            },
+            _id: string;
         }[];
         title: string;
         _id: string;
@@ -24,6 +25,42 @@ function BillPage() {
     // console.log(billData);
 
     const [isTrue, setIsTrue] = useState(false);
+    const [selectedMember, setSelectedMember] = useState('');
+    const [inputAmount, setInputAmount] = useState('');
+
+    const addAmount = async () => {
+        if (!selectedMember || !inputAmount) {
+            return window.alert("Fill all the fields");
+        }
+        if (!/^\d*$/.test(inputAmount)) {
+            setInputAmount('');
+            return window.alert("Enter the number");
+        }
+
+        try {
+            const res = await fetch(`/addAmount/${billId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    selectedMember, inputAmount
+                })
+            });
+
+            const data = await res.json();
+            if (res.status !== 200) {
+                return window.alert(`${data.error}`);
+            }
+            else {
+                setBillData(data);
+                setIsTrue(false);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     useEffect(() => {
         const getBillData = async () => {
@@ -116,12 +153,20 @@ function BillPage() {
                                     <div className="body">
                                         <div>
                                             <label htmlFor="selectedFruit">Choose member:</label>
-                                            <select name="selectedFruit" id="selectedFruit" style={{ display: 'block' }}>
+                                            <select name="selectedFruit" id="selectedFruit" style={{ display: 'block' }} onChange={(e) => setSelectedMember(e.target.value)}>
+                                                <option value="">Select member</option>
                                                 {billData?.members.map((member, index) => (
-                                                    <option key={index} value={member.member.name}>{member.member.name}</option>
+                                                    <option key={index} value={member._id}>{member.member.name}</option>
                                                 ))}
                                             </select>
                                         </div>
+
+                                        <div className="amount">
+                                            <label htmlFor="spend">Amount:</label>
+                                            <input type="text" id="spend" name="spend" value={inputAmount} onChange={(e) => setInputAmount(e.target.value)} />
+                                        </div>
+
+                                        <button className="addNew-create-button" onClick={addAmount}>Add</button>
                                     </div>
                                 </div>
                             </div>
