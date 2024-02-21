@@ -55,6 +55,7 @@ function BillPage() {
             }
             else {
                 setBillData(data);
+                setInputAmount('');
                 setIsTrue(false);
             }
         } catch (error) {
