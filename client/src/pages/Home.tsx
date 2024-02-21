@@ -1,7 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 export const Home: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  const getData = async () => {
+    try {
+      const res = await fetch('/user', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+      });
+
+      // const data = await res.json();
+      if (res.status !== 200) {
+        navigate('/login');
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getData();
+  }, [])
 
   return (
     <div className="home-container">
