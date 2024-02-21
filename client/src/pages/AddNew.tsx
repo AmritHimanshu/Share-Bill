@@ -56,7 +56,7 @@ function AddNew() {
                 return window.alert(`${data.error}`);
             }
             else {
-                console.log(data);
+                // console.log(data);
                 navigate('/');
             }
         } catch (error) {
