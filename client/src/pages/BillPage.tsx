@@ -19,7 +19,6 @@ function BillPage() {
     }
 
     const { billId } = useParams();
-    // console.log(billId)
 
     const [billData, setBillData] = useState<BillData | null>();
     // console.log(billData);
