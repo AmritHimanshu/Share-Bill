@@ -137,6 +137,11 @@ router.get('/user', authenticate, (req: AuthenticatedRequest, res) => {
     res.status(200).send(req.rootUser);
 });
 
+router.get('/logout', (req, res) => {
+    res.clearCookie('jwtoken', { path: '/' });
+    res.status(200).json({ message: 'User Logout' });
+})
+
 
 router.get('/', (req, res) => {
     res.json({ message: "Server setup is done from Auth" });

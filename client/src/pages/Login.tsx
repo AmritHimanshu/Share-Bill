@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
@@ -38,7 +38,33 @@ function Login() {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
+
+    useEffect(() => {
+        const logOutUser = async () => {
+            try {
+                const res = await fetch('/logout', {
+                    method: 'GET',
+                    headers: {
+                        Accept: 'application/json', // For cookies
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'include' // For tokens
+                });
+
+                // const data = await res.json();
+
+                if (res.status !== 200) {
+                    window.alert("User not logged Out");
+                    //   console.log("User not logged out");
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        logOutUser();
+    }, [])
 
     return (
         <div className="login-body">
