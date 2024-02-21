@@ -1,7 +1,7 @@
 import express from 'express';
 const app = express();
 import * as dotenv from 'dotenv';
-// import cors from 'cors';
+import cors from 'cors';
 
 
 dotenv.config({ path: __dirname + '../.env' });
@@ -10,10 +10,11 @@ const PORT = process.env.PORT || 5000;
 
 require('./db/conn');
 
-// app.use(cors({
-//     origin: 'http://localhost:3000',
-//     credentials: true
-// }));
+app.use(cors({
+    origin: 'http://localhost:3000',
+    // origin: 'http://localhost:3000',
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(require("./router/auth"));
