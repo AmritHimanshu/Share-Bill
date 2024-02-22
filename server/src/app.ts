@@ -15,7 +15,7 @@ app.use(cors({
     // origin: "http://localhost:3000",
     origin: "https://share-bill-lemon.vercel.app",
     allowedHeaders: ['Content-Type', 'Origin', 'X-Requested-With', 'Accept', 'x-client-key', 'x-client-token', 'x-client-secret', 'Authorization'],
-    methods: ['GET,HEAD,PUT,PATCH,POST,DELETE'],
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
     credentials: true,
 }));
 
