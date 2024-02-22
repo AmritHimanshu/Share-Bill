@@ -149,7 +149,7 @@ function BillPage() {
 
                         {isTrue &&
                             <div className="viewBillSection-card-container-addSpend">
-                                <div className="viewBillSection-car-container-addSpend-box">
+                                <div className="viewBillSection-card-container-addSpend-box">
                                     <div className="header">
                                         <div className="title">Add Spends</div>
                                         <div><CloseIcon style={{ cursor: 'pointer' }} onClick={() => setIsTrue(!isTrue)} /></div>

@@ -30,6 +30,10 @@ body {
     cursor: default;
 }
 
+.sidebar-container-phone {
+    display: none;
+}
+
 .sidebar-container {
     padding: 15px;
     width: 25%;
@@ -37,10 +41,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: rgb(57, 57, 57);
-    /* background-color: rgb(78, 27, 205); */
-    /* background-color: rgb(0, 144, 72); */
-    /* box-shadow: 3px 0px 10px rgb(99, 99, 99); */
+    background-color: rgb(41, 41, 41);
 }
 
 .sidebar-header {
@@ -48,14 +49,10 @@ body {
     margin: 10px 0;
     font-size: 25px;
     background-color: rgb(195, 195, 195);
-    font-weight: bolder;
+    font-weight: 500;
     text-align: center;
     box-shadow: inset 0px 0px 5px -1px black;
     cursor: default;
-
-    /* background: -webkit-radial-gradient(#ffffff, #00ff62);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent; */
 }
 
 .sidebar-new-bill {
@@ -73,8 +70,7 @@ body {
     justify-content: center;
     border-radius: 5px;
     transition: transform 0.3s ease;
-    border: 2px solid white;
-    /* box-shadow: inset 0px 0px 35px -5px rgb(48, 48, 48); */
+    border: 1px solid white;
 }
 
 .sidebar-new-bill:hover {
@@ -98,16 +94,12 @@ body {
 
 .sidebar-old-bill>.active {
     color: rgb(0, 144, 72);
-    /* color: rgb(255, 255, 124); */
-}
-
-.sidebar-old-bill>.title {
     font-weight: bold;
 }
 
 .sidebar-old-bill>.date {
-    color: rgb(224, 224, 224);
-    font-size: 15px;
+    color: rgb(185, 185, 185);
+    font-size: 13px;
 }
 
 .sidebar-old-bill:hover>.title {
@@ -126,8 +118,8 @@ body {
 }
 
 .sidebar-account>.username {
-    font-size: 20px;
-    font-weight: bolder;
+    font-size: 16px;
+    font-weight: bold;
     color: white;
     margin: 0 10px;
 }
@@ -261,52 +253,49 @@ hr {
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    /* border: 2px solid red; */
     position: relative;
 }
 
 .viewBillSection-card-container-addSpend {
-    /* border: 2px solid black; */
-    position: absolute;
-    height: 100%;
-    width: 100%;
+    position: fixed;
+    height: 90%;
+    width: 75%;
     background: rgba(195, 195, 195, 0.883);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.viewBillSection-car-container-addSpend-box {
+.viewBillSection-card-container-addSpend-box {
     width: 400px;
-    /* height: 600px; */
     background-color: white;
     padding: 10px;
     box-shadow: 5px 5px 20px -10px black;
     border-radius: 5px;
 }
 
-.viewBillSection-car-container-addSpend-box>.header {
+.viewBillSection-card-container-addSpend-box>.header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2px;
 }
 
-.viewBillSection-car-container-addSpend-box>.header>.title {
+.viewBillSection-card-container-addSpend-box>.header>.title {
     font-size: 19px;
     font-weight: bold;
 }
 
-.viewBillSection-car-container-addSpend-box>.body>div>label {
+.viewBillSection-card-container-addSpend-box>.body>div>label {
     color: black;
     font-size: 16px;
 }
 
-.viewBillSection-car-container-addSpend-box>.body>div>select {
+.viewBillSection-card-container-addSpend-box>.body>div>select {
     border: 1px solid rgb(85, 85, 85);
 }
 
-.viewBillSection-car-container-addSpend-box>.body>.amount {
+.viewBillSection-card-container-addSpend-box>.body>.amount {
     padding-top: 20px;
 }
 
@@ -467,3 +456,277 @@ form>div>label {
 
 
 /* Responsive */
+
+@media screen and (max-width:600px) {
+
+    .login-body {
+        padding: 0 10px;
+    }
+
+    .login-container {
+        width: 400px;
+        padding: 15px;
+    }
+
+    .login-header {
+        font-size: 19px;
+    }
+
+    form>div>label {
+        font-size: 15px;
+    }
+
+    .login-button {
+        margin-top: 20px;
+    }
+
+    .register-body {
+        padding: 0 10px;
+    }
+
+    .register-container {
+        width: 400px;
+        padding: 15px;
+    }
+
+    .register-header {
+        font-size: 19px;
+    }
+
+    .register-button {
+        margin-top: 20px;
+    }
+
+    .viewBillSection-container {
+        padding: 0px 0px;
+    }
+
+    .viewBillSection-header {
+        padding: 0 10px 0 10px;
+        margin-top: 15px;
+    }
+
+    .viewBillSection-header>div>.title {
+        font-size: 20px;
+    }
+
+    .viewBillSection-header>div>.date {
+        font-size: 10px;
+    }
+
+    .viewBillSection-header>.add-spends {
+        font-weight: 500;
+    }
+
+    .viewBillSection-card-container-addSpend-box {
+        width: 380px;
+        padding: 10px;
+    }
+
+    .viewBillSection-card-container-addSpend-box>.header {
+        padding: 0px;
+    }
+
+    .viewBillSection-card-container-addSpend-box>.header>.title {
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .viewBillSection-card-container-addSpend-box>.body>div>label {
+        font-size: 14px;
+    }
+
+    .viewBillSection-card-container-addSpend-box>.body>div>select {
+        border: 1px solid rgb(145, 145, 145);
+    }
+
+    .addNew-container {
+        padding: 15px;
+        width: 350px;
+    }
+
+    .addNew-container-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .addNew-form-title>label {
+        font-size: 15px;
+    }
+
+    .addNew-form-title>input[type=text] {
+        font-size: 15px;
+    }
+
+    .addNew-form-member>label {
+        font-size: 15px;
+    }
+
+    .addNew-form-member>div>input[type=text] {
+        font-size: 15px;
+    }
+
+    ::-ms-input-placeholder {
+        /* Edge 12-18 */
+        font-size: 13px;
+    }
+
+    ::placeholder {
+        font-size: 13px;
+    }
+
+    .add-members-button {
+        margin: 10px 0;
+    }
+
+    .addNew-create-button {
+        margin-top: 15px;
+    }
+
+}
+
+@media screen and (max-width:950px) {
+    .sidebar-container {
+        display: none;
+    }
+
+    .sidebar-container-phone {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        padding: 5px;
+    }
+
+    .sidebar-phone-box {
+        background-color: rgb(41, 41, 41);
+        padding: 20px;
+        width: 300px;
+        min-height: 500px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .sidebar-phone-header {
+        padding: 5px;
+        margin: 10px 0;
+        font-size: 12px;
+        color: black;
+        background-color: rgb(195, 195, 195);
+        font-weight: 500;
+        text-align: center;
+        box-shadow: inset 0px 0px 5px -1px black;
+        cursor: default;
+    }
+
+    .sidebar-phone-new-bill {
+        width: 100%;
+        height: 25px;
+        color: white;
+        padding: 5px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        transition: transform 0.3s ease;
+        border: 1px solid white;
+    }
+
+    .sidebar-phone-old-bill {
+        border-bottom: 1px solid rgb(141, 141, 141);
+        text-align: center;
+        padding: 5px 1px;
+        margin: 10px 0;
+        font-size: 10px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .sidebar-phone-old-bill>.active {
+        color: rgb(0, 144, 72);
+        font-weight: bold;
+    }
+
+    .sidebar-phone-old-bill>.date {
+        color: rgb(185, 185, 185);
+        font-size: 7px;
+    }
+
+    .sidebar-phone-old-bill:hover>.title {
+        color: rgb(255, 255, 216);
+    }
+
+    .sidebar-phone-account {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .sidebar-phone-account>img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .sidebar-phone-account>.username {
+        font-size: 10px;
+        font-weight: bold;
+        color: white;
+        margin: 0 10px;
+    }
+
+    .home-AddNew {
+        width: 100%;
+        padding: 20px 0 20px 0;
+    }
+
+    .home-AddNew-empty {
+        font-size: 30px;
+    }
+
+    .viewBillSection-card-container-addSpend {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width:950px) and (max-width:1400px) {
+    .sidebar-container {
+        padding: 15px;
+    }
+
+    .sidebar-header {
+        font-size: 20px;
+    }
+
+    .sidebar-new-bill {
+        padding: 3px;
+        font-size: 15px;
+    }
+
+    .sidebar-old-bill {
+        font-size: 16px;
+    }
+
+    .sidebar-old-bill>.date {
+        font-size: 12px;
+    }
+
+    .sidebar-account>img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .sidebar-account>.username {
+        font-size: 16px;
+        font-weight: 500;
+    }
+}
