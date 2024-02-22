@@ -12,6 +12,7 @@ require('./db/conn');
 
 app.use(cors({
     // origin: true,
+    // origin: "http://localhost:3000",
     origin: "https://share-bill-lemon.vercel.app",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true
