@@ -1,7 +1,8 @@
 import express from 'express';
 const app = express();
 import * as dotenv from 'dotenv';
-import cors from 'cors';
+// import cors from 'cors';
+const cors = require('cors');
 
 
 dotenv.config({ path: __dirname + '../.env' });
