@@ -6,7 +6,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 function Login() {
 
     // const BASE_URL = "http://localhost:5000";
-    const BASE_URL = "https://share-bill-api.vercel.app/";
+    const BASE_URL = "https://share-bill-api.vercel.app";
 
     const navigate = useNavigate();
 
