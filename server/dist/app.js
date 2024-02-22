@@ -29,14 +29,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const dotenv = __importStar(require("dotenv"));
-// dotenv.config({ path: './config.env' });
-dotenv.config();
-// require('./db/conn');
+// import cors from 'cors';
+const cors = require('cors');
+dotenv.config({ path: __dirname + '../.env' });
+const PORT = process.env.PORT || 5000;
+require('./db/conn');
+app.use(cors({
+    // origin:true,
+    origin: "https://share-bill-lemon.vercel.app",
+    credentials: true, // Enable credentials (cookies)
+}));
+app.use(express_1.default.json());
 app.use(require("./router/auth"));
-const PORT = process.env.PORT;
-app.get('/', (req, res) => {
-    res.json({ message: "Server setup is done" });
-});
 app.listen(PORT, () => {
     console.log(`Server is running at port ${PORT}`);
 });
