@@ -186,7 +186,7 @@ router.get('/logout', (req, res) => {
 
 
 router.get('/', (req, res) => {
-    res.status(200).send("This is from Auth.js");
+    res.status(200).send({ message: "This is from Auth.js" });
 })
 
 module.exports = router;
